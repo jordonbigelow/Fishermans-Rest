@@ -34,6 +34,30 @@ func _physics_process(_delta):
 	get_input()
 	move_and_slide()
 
+
+func change_fishing_state(new_state: FishingState) -> void:
+	current_fishing_state = new_state
+	print("State: ", FishingState.keys()[new_state])
+	
+	match new_state:
+		FishingState.IDLE:
+			pass
+		FishingState.CASTING:
+			match player_facing:
+				Facing.LEFT:
+					animation_player.play("fishing/casting_left")
+				Facing.RIGHT:
+					animation_player.play("fishing/casting_right")
+				Facing.UP:
+					animation_player.play("fishing/casting_up")
+				Facing.DOWN:
+					animation_player.play("fishing/casting_down")
+		FishingState.WAITING:
+			pass
+		FishingState.CAUGHT:
+			pass
+
+
 func get_input():
 	if Input.is_action_just_pressed("interact") and player_can_fish:
 		if current_state != State.FISHING:
@@ -88,26 +112,3 @@ func _on_non_fishing_area_2d_body_entered(body: Node2D) -> void:
 func _on_non_fishing_area_2d_body_exited(body: Node2D) -> void:
 	if body == self:
 		player_can_fish = true
-
-
-func change_fishing_state(new_state: FishingState) -> void:
-	current_fishing_state = new_state
-	print("State: ", FishingState.keys()[new_state])
-	
-	match new_state:
-		FishingState.IDLE:
-			pass
-		FishingState.CASTING:
-			match player_facing:
-				Facing.LEFT:
-					animation_player.play("fishing/casting_left")
-				Facing.RIGHT:
-					animation_player.play("fishing/casting_right")
-				Facing.UP:
-					animation_player.play("fishing/casting_up")
-				Facing.DOWN:
-					animation_player.play("fishing/casting_down")
-		FishingState.WAITING:
-			pass
-		FishingState.CAUGHT:
-			pass
