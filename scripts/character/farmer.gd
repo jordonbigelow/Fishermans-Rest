@@ -14,6 +14,18 @@ var current_fishing_state: FishingState
 var player_can_fish: bool = false
 
 func get_input():
+	if Input.is_action_just_pressed("interact") and player_can_fish:
+		if current_state != State.FISHING:
+			current_state = State.FISHING
+			change_fishing_state(FishingState.CASTING)
+		elif current_state == State.FISHING:
+			current_state = State.IDLE
+			change_fishing_state(FishingState.IDLE)
+
+	if current_state == State.FISHING:
+		velocity = Vector2.ZERO
+		return
+
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	match input_direction:
 		Vector2.LEFT:
@@ -33,23 +45,21 @@ func get_input():
 			current_state = State.WALKING
 			player_facing = Facing.DOWN
 		Vector2.ZERO:
-			match player_facing:
-				Facing.LEFT:
-					animation_player.play("idle/default_left")
-				Facing.RIGHT:
-					animation_player.play("idle/default_right")
-				Facing.UP:
-					animation_player.play("idle/default_up")
-				Facing.DOWN:
-					animation_player.play("idle/default_down")
-			current_state = State.IDLE
+			if current_state != State.FISHING:
+				match player_facing:
+					Facing.LEFT:
+						animation_player.play("idle/default_left")
+					Facing.RIGHT:
+						animation_player.play("idle/default_right")
+					Facing.UP:
+						animation_player.play("idle/default_up")
+					Facing.DOWN:
+						animation_player.play("idle/default_down")
+				current_state = State.IDLE
 
 	velocity = input_direction * speed
 
-	if Input.is_action_just_pressed("interact") and player_can_fish and current_state != State.FISHING:
-		current_state = State.FISHING
-		change_fishing_state(FishingState.CASTING)
-
+	
 
 func _physics_process(_delta):
 	get_input()
@@ -67,7 +77,7 @@ func _on_non_fishing_area_2d_body_exited(body: Node2D) -> void:
 
 
 func change_fishing_state(new_state: FishingState) -> void:
-	current_state = new_state
+	current_fishing_state = new_state
 	print("State: ", FishingState.keys()[new_state])
 	
 	match new_state:
