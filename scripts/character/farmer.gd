@@ -45,17 +45,16 @@ func get_input():
 			current_state = State.WALKING
 			player_facing = Facing.DOWN
 		Vector2.ZERO:
-			if current_state != State.FISHING:
-				match player_facing:
-					Facing.LEFT:
-						animation_player.play("idle/default_left")
-					Facing.RIGHT:
-						animation_player.play("idle/default_right")
-					Facing.UP:
-						animation_player.play("idle/default_up")
-					Facing.DOWN:
-						animation_player.play("idle/default_down")
-				current_state = State.IDLE
+			match player_facing:
+				Facing.LEFT:
+					animation_player.play("idle/default_left")
+				Facing.RIGHT:
+					animation_player.play("idle/default_right")
+				Facing.UP:
+					animation_player.play("idle/default_up")
+				Facing.DOWN:
+					animation_player.play("idle/default_down")
+			current_state = State.IDLE
 
 	velocity = input_direction * speed
 
