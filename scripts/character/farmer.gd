@@ -10,7 +10,9 @@ enum FishingState {
 	IDLE,
 	CASTING,
 	WAITING,
-	CAUGHT,
+	BITING,
+	REELING,
+	CATCH,
 }
 
 enum Facing {
@@ -52,9 +54,15 @@ func change_fishing_state(new_state: FishingState) -> void:
 					animation_player.play("fishing/casting_up")
 				Facing.DOWN:
 					animation_player.play("fishing/casting_down")
+			await animation_player.animation_finished
+			change_fishing_state(FishingState.WAITING)
 		FishingState.WAITING:
 			pass
-		FishingState.CAUGHT:
+		FishingState.BITING:
+			pass
+		FishingState.REELING:
+			pass
+		FishingState.CATCH:
 			pass
 
 
@@ -72,6 +80,12 @@ func get_input():
 		return
 
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	set_walking_animation(input_direction)
+
+	velocity = input_direction * speed
+
+
+func set_walking_animation(input_direction: Vector2) -> void:
 	match input_direction:
 		Vector2.LEFT:
 			animation_player.play("walking/left")
@@ -100,8 +114,6 @@ func get_input():
 				Facing.DOWN:
 					animation_player.play("idle/default_down")
 			current_state = State.IDLE
-
-	velocity = input_direction * speed
 
 
 func _on_non_fishing_area_2d_body_entered(body: Node2D) -> void:
