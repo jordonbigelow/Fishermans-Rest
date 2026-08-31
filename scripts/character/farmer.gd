@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 enum State{ IDLE, WALKING, FISHING }
 enum FishingState { IDLE, CASTING, WAITING, CAUGHT }
-enum Facing {LEFT, RIGHT, UP, DOWN }
+enum Facing { LEFT, RIGHT, UP, DOWN }
 
 @export var speed: float = 75.0 # pixel per inch
 
@@ -18,7 +18,7 @@ func get_input():
 		if current_state != State.FISHING:
 			current_state = State.FISHING
 			change_fishing_state(FishingState.CASTING)
-		elif current_state == State.FISHING:
+		else:
 			current_state = State.IDLE
 			change_fishing_state(FishingState.IDLE)
 
