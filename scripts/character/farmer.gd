@@ -1,17 +1,38 @@
 extends CharacterBody2D
 
-enum State{ IDLE, WALKING, FISHING }
-enum FishingState { IDLE, CASTING, WAITING, CAUGHT }
-enum Facing { LEFT, RIGHT, UP, DOWN }
+enum State {
+	IDLE,
+	WALKING,
+	FISHING,
+}
+
+enum FishingState {
+	IDLE,
+	CASTING,
+	WAITING,
+	CAUGHT,
+}
+
+enum Facing {
+	LEFT,
+	RIGHT,
+	UP,
+	DOWN,
+}
 
 @export var speed: float = 75.0 # pixel per inch
-
-@onready var animation_player := $AnimationPlayer
 
 var current_state = State.IDLE
 var player_facing = Facing.DOWN
 var current_fishing_state: FishingState
 var player_can_fish: bool = false
+
+@onready var animation_player := $AnimationPlayer
+
+
+func _physics_process(_delta):
+	get_input()
+	move_and_slide()
 
 func get_input():
 	if Input.is_action_just_pressed("interact") and player_can_fish:
@@ -57,12 +78,6 @@ func get_input():
 			current_state = State.IDLE
 
 	velocity = input_direction * speed
-
-	
-
-func _physics_process(_delta):
-	get_input()
-	move_and_slide()
 
 
 func _on_non_fishing_area_2d_body_entered(body: Node2D) -> void:
