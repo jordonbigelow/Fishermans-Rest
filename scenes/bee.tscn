@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bhhgbjaqe714h"]
+
+[ext_resource type="Texture2D" uid="uid://bb42whk2vkqxj" path="res://assets/artwork/creatures/forest/bee/Bees.png" id="1_1q2x0"]
+[ext_resource type="Script" uid="uid://dxegneyfva5gb" path="res://scripts/bee.gd" id="1_vie5o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1q2x0"]
+atlas = ExtResource("1_1q2x0")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vie5o"]
+atlas = ExtResource("1_1q2x0")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogg2i"]
+atlas = ExtResource("1_1q2x0")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qf6nb"]
+atlas = ExtResource("1_1q2x0")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oynbf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1q2x0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vie5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogg2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qf6nb")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1q2x0"]
+radius = 3.1622777
+
+[node name="Bee" type="CharacterBody2D" unique_id=1584810606]
+z_index = 1
+y_sort_enabled = true
+motion_mode = 1
+script = ExtResource("1_vie5o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=5854743]
+sprite_frames = SubResource("SpriteFrames_oynbf")
+autoplay = "default"
+frame_progress = 0.24248482
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=832616526]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_1q2x0")
+
+[node name="Timer" type="Timer" parent="." unique_id=443178765]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
