@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5iciihbjudoh"
-path="res://.godot/imported/Blue.png-8bc2e0d8aff2329f402f60e03265f46b.ctex"
+uid="uid://dsqpge3jcikyt"
+path="res://.godot/imported/Blue_idle.png-f5abb18ef22ccb2da8cfbb9f8023fd37.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/artwork/character/eyes/Blue.png"
-dest_files=["res://.godot/imported/Blue.png-8bc2e0d8aff2329f402f60e03265f46b.ctex"]
+source_file="res://assets/artwork/character/clothes/Blue_idle.png"
+dest_files=["res://.godot/imported/Blue_idle.png-f5abb18ef22ccb2da8cfbb9f8023fd37.ctex"]
 
 [params]
 

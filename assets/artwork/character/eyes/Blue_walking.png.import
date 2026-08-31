@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://i8ukqesjwatd"
-path="res://.godot/imported/Brown.png-db26d745742fec493e79a101e6ba6738.ctex"
+uid="uid://b5iciihbjudoh"
+path="res://.godot/imported/Blue_walking.png-53b250428c94fc2c310b019daffcedee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/artwork/character/hair/Brown.png"
-dest_files=["res://.godot/imported/Brown.png-db26d745742fec493e79a101e6ba6738.ctex"]
+source_file="res://assets/artwork/character/eyes/Blue_walking.png"
+dest_files=["res://.godot/imported/Blue_walking.png-53b250428c94fc2c310b019daffcedee.ctex"]
 
 [params]
 
