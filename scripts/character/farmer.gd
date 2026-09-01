@@ -24,10 +24,10 @@ enum Facing {
 
 @export var speed: float = 75.0 # pixel per inch
 
-var current_state = State.IDLE
-var player_facing = Facing.DOWN
 var current_fishing_state: FishingState
+var current_state = State.IDLE
 var player_can_fish: bool = false
+var player_facing = Facing.DOWN
 
 @onready var animation_player := $AnimationPlayer
 
