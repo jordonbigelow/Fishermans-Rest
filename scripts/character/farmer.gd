@@ -73,12 +73,15 @@ func change_fishing_state(new_state: FishingState) -> void:
 				return
 			change_fishing_state(FishingState.BITING)
 		FishingState.BITING:
-			pass
+			await get_tree().create_timer(randf_range(0.75, 1.0)).timeout
+			change_fishing_state(FishingState.REELING)
 		FishingState.REELING:
-			pass
+			await get_tree().create_timer(0.5).timeout
+			change_fishing_state(FishingState.CATCH)
 		FishingState.CATCH:
-			pass
-
+			print("caught fish")
+			change_fishing_state(FishingState.IDLE)
+			current_state = State.IDLE
 
 func get_input():
 	if Input.is_action_just_pressed("interact") and player_can_fish:
