@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://d4gv7bj6irdo5" path="res://assets/artwork/character/body/idle.png" id="1_vltvv"]
 [ext_resource type="Texture2D" uid="uid://b5iciihbjudoh" path="res://assets/artwork/character/eyes/Blue_walking.png" id="2_2qlof"]
 [ext_resource type="Texture2D" uid="uid://cocc5f023ncqs" path="res://assets/artwork/character/body/fishing_casting.png" id="2_a2y1s"]
-[ext_resource type="Script" uid="uid://cjvdx1kl04yr2" path="res://scripts/state_machine/state_machine.gd" id="2_mflhc"]
 [ext_resource type="Texture2D" uid="uid://b42s1vvixscw7" path="res://assets/artwork/character/body/walking.png" id="3_go23t"]
 [ext_resource type="Texture2D" uid="uid://dsqpge3jcikyt" path="res://assets/artwork/character/clothes/Blue_idle.png" id="3_hkter"]
 [ext_resource type="Texture2D" uid="uid://i8ukqesjwatd" path="res://assets/artwork/character/hair/Brown_idle.png" id="4_7541a"]
@@ -4378,27 +4377,6 @@ _data = {
 [node name="Farmer" type="CharacterBody2D" unique_id=2043087942]
 motion_mode = 1
 script = ExtResource("1_rov4t")
-
-[node name="StateMachine" type="Node" parent="." unique_id=1698764636]
-script = ExtResource("2_mflhc")
-
-[node name="Idle" type="Node" parent="StateMachine" unique_id=596753461]
-
-[node name="Walking" type="Node" parent="StateMachine" unique_id=732405069]
-
-[node name="Fishing" type="Node" parent="StateMachine" unique_id=764632557]
-
-[node name="Idle" type="Node" parent="StateMachine/Fishing" unique_id=2059259126]
-
-[node name="Casting" type="Node" parent="StateMachine/Fishing" unique_id=838036154]
-
-[node name="Waiting" type="Node" parent="StateMachine/Fishing" unique_id=804703771]
-
-[node name="Biting" type="Node" parent="StateMachine/Fishing" unique_id=356890670]
-
-[node name="Reeling" type="Node" parent="StateMachine/Fishing" unique_id=1325429024]
-
-[node name="Catch" type="Node" parent="StateMachine/Fishing" unique_id=344022657]
 
 [node name="Skin" type="AnimatedSprite2D" parent="." unique_id=738603225]
 sprite_frames = SubResource("SpriteFrames_v8af3")
