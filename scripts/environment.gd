@@ -1,6 +1,6 @@
 extends Node2D
 
-enum State { BUMBLING, SEEKING, POLINATING, RETURNING }
+enum State { IDLE, WALKING, FISHING }
 
 var bee = preload("res://scenes/bee.tscn")
 @onready var bee_spawn = $Plants/BeeSpawnPoint
