@@ -45,77 +45,38 @@ func change_fishing_state(new_state: FishingState) -> void:
 		FishingState.IDLE:
 			pass
 		FishingState.CASTING:
-			match player_facing:
-				Facing.LEFT:
-					animation_player.play("fishing/casting_left")
-				Facing.RIGHT:
-					animation_player.play("fishing/casting_right")
-				Facing.UP:
-					animation_player.play("fishing/casting_up")
-				Facing.DOWN:
-					animation_player.play("fishing/casting_down")
+			play_facing_animation("fishing/casting")
 			await animation_player.animation_finished
 			if current_state != State.FISHING:
 				return
 			change_fishing_state(FishingState.WAITING)
 		FishingState.WAITING:
-			match player_facing:
-				Facing.LEFT:
-					animation_player.play("fishing/waiting_left")
-				Facing.RIGHT:
-					animation_player.play("fishing/waiting_right")
-				Facing.UP:
-					animation_player.play("fishing/waiting_up")
-				Facing.DOWN:
-					animation_player.play("fishing/waiting_down")
+			play_facing_animation("fishing/waiting")
 			await get_tree().create_timer(randf_range(1.0, 1.5)).timeout
 			if current_state != State.FISHING:
 				return
 			change_fishing_state(FishingState.BITING)
 		FishingState.BITING:
-			match player_facing:
-				Facing.LEFT:
-					animation_player.play("fishing/bite_left")
-				Facing.RIGHT:
-					animation_player.play("fishing/bite_right")
-				Facing.UP:
-					animation_player.play("fishing/bite_up")
-				Facing.DOWN:
-					animation_player.play("fishing/bite_down")
+			play_facing_animation("fishing/bite")
 			await get_tree().create_timer(randf_range(0.75, 1.0)).timeout
 			if current_state != State.FISHING:
 				return
 			change_fishing_state(FishingState.REELING)
 		FishingState.REELING:
-			match player_facing:
-				Facing.LEFT:
-					animation_player.play("fishing/reel_left")
-				Facing.RIGHT:
-					animation_player.play("fishing/reel_right")
-				Facing.UP:
-					animation_player.play("fishing/reel_up")
-				Facing.DOWN:
-					animation_player.play("fishing/reel_down")
+			play_facing_animation("fishing/reel")
 			await get_tree().create_timer(0.5).timeout
 			if current_state != State.FISHING:
 				return
 			change_fishing_state(FishingState.CATCH)
 		FishingState.CATCH:
-			match player_facing:
-				Facing.LEFT:
-					animation_player.play("fishing/catch_left")
-				Facing.RIGHT:
-					animation_player.play("fishing/catch_right")
-				Facing.UP:
-					animation_player.play("fishing/catch_up")
-				Facing.DOWN:
-					animation_player.play("fishing/catch_down")
+			play_facing_animation("fishing/catch")
 			await get_tree().create_timer(1.0).timeout
 			if current_state != State.FISHING:
 				return
 			print("caught fish")
 			change_fishing_state(FishingState.IDLE)
 			current_state = State.IDLE
+
 
 func get_input():
 	if Input.is_action_just_pressed("interact") and player_can_fish:
@@ -134,6 +95,18 @@ func get_input():
 	set_walking_animation(input_direction)
 
 	velocity = input_direction * speed
+
+
+func play_facing_animation(animation_base_name: String) -> void:
+	match player_facing:
+		Facing.LEFT:
+			animation_player.play(animation_base_name + "_left")
+		Facing.RIGHT:
+			animation_player.play(animation_base_name + "_right")
+		Facing.UP:
+			animation_player.play(animation_base_name + "_up")
+		Facing.DOWN:
+			animation_player.play(animation_base_name + "_down")
 
 
 func set_walking_animation(input_direction: Vector2) -> void:
