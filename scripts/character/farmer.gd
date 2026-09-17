@@ -83,6 +83,8 @@ func change_fishing_state(new_state: FishingState) -> void:
 				Facing.DOWN:
 					animation_player.play("fishing/bite_down")
 			await get_tree().create_timer(randf_range(0.75, 1.0)).timeout
+			if current_state != State.FISHING:
+				return
 			change_fishing_state(FishingState.REELING)
 		FishingState.REELING:
 			match player_facing:
@@ -95,6 +97,8 @@ func change_fishing_state(new_state: FishingState) -> void:
 				Facing.DOWN:
 					animation_player.play("fishing/reel_down")
 			await get_tree().create_timer(0.5).timeout
+			if current_state != State.FISHING:
+				return
 			change_fishing_state(FishingState.CATCH)
 		FishingState.CATCH:
 			match player_facing:
@@ -107,6 +111,8 @@ func change_fishing_state(new_state: FishingState) -> void:
 				Facing.DOWN:
 					animation_player.play("fishing/catch_down")
 			await get_tree().create_timer(1.0).timeout
+			if current_state != State.FISHING:
+				return
 			print("caught fish")
 			change_fishing_state(FishingState.IDLE)
 			current_state = State.IDLE
