@@ -73,6 +73,15 @@ func change_fishing_state(new_state: FishingState) -> void:
 				return
 			change_fishing_state(FishingState.BITING)
 		FishingState.BITING:
+			match player_facing:
+				Facing.LEFT:
+					animation_player.play("fishing/bite_left")
+				Facing.RIGHT:
+					animation_player.play("fishing/bite_right")
+				Facing.UP:
+					animation_player.play("fishing/bite_up")
+				Facing.DOWN:
+					animation_player.play("fishing/bite_down")
 			await get_tree().create_timer(randf_range(0.75, 1.0)).timeout
 			change_fishing_state(FishingState.REELING)
 		FishingState.REELING:
