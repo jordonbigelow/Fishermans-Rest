@@ -106,6 +106,7 @@ func change_fishing_state(new_state: FishingState) -> void:
 					animation_player.play("fishing/catch_up")
 				Facing.DOWN:
 					animation_player.play("fishing/catch_down")
+			await get_tree().create_timer(1.0).timeout
 			print("caught fish")
 			change_fishing_state(FishingState.IDLE)
 			current_state = State.IDLE
