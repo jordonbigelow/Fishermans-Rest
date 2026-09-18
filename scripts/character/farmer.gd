@@ -74,8 +74,8 @@ func change_fishing_state(new_state: FishingState) -> void:
 			await get_tree().create_timer(1.0).timeout
 			if current_state != State.FISHING:
 				return
-			var caught_fish := _pick_random_fish().duplicate()
-			caught_fish.set("actual_size", randf_range(caught_fish.min_size, caught_fish.max_size))
+			var caught_fish: FishData = _pick_random_fish().duplicate()
+			caught_fish.actual_size = randf_range(caught_fish.min_size, caught_fish.max_size)
 			print("You Caught a Fish!")
 			print("Species: " + caught_fish.species_name)
 			print("Length: " + str(caught_fish.actual_size))
