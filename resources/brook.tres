@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://bs0ctm2exc3km"]
+
+[ext_resource type="Script" uid="uid://0r5q140yy024" path="res://scripts/fish_data.gd" id="1_h1hh8"]
+
+[resource]
+script = ExtResource("1_h1hh8")
+species_name = "Brook"
+min_size = 6.0
+max_size = 14.0
+rarity = 3
+base_reel_difficulty = 2.0
+habitat_tags = Array[String](["Pond", "River", "Lake"])
+metadata/_custom_type_script = "uid://0r5q140yy024"

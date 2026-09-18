@@ -52,7 +52,7 @@ func change_fishing_state(new_state: FishingState) -> void:
 			change_fishing_state(FishingState.WAITING)
 		FishingState.WAITING:
 			play_facing_animation("fishing/waiting")
-			await get_tree().create_timer(randf_range(1.0, 1.5)).timeout
+			await get_tree().create_timer(randf_range(1.0, 2.5)).timeout
 			if current_state != State.FISHING:
 				return
 			change_fishing_state(FishingState.BITING)

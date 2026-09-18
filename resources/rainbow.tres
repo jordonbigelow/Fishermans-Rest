@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://b3gv6p1wdsdy4"]
+
+[ext_resource type="Script" uid="uid://0r5q140yy024" path="res://scripts/fish_data.gd" id="1_k2t67"]
+[ext_resource type="Texture2D" uid="uid://bn2ptqlfa2cio" path="res://assets/artwork/creatures/water/Fish rainbow.png" id="2_pf5kg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k2t67"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pf5kg")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_k2t67")
+species_name = "Rainbow"
+sprite_frames = SubResource("SpriteFrames_k2t67")
+min_size = 4.0
+max_size = 20.0
+rarity = 1
+base_reel_difficulty = 1.0
+habitat_tags = Array[String](["Ponds", "Rivers", "Lakes"])
+metadata/_custom_type_script = "uid://0r5q140yy024"

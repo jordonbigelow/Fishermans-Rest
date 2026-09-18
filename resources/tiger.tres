@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://b6cu5bnt6dusa"]
+
+[ext_resource type="Script" uid="uid://0r5q140yy024" path="res://scripts/fish_data.gd" id="1_0adcy"]
+
+[resource]
+script = ExtResource("1_0adcy")
+species_name = "Tiger"
+min_size = 3.0
+max_size = 20.0
+rarity = 2
+base_reel_difficulty = 1.0
+habitat_tags = Array[String](["Pond", "River", "Lake"])
+metadata/_custom_type_script = "uid://0r5q140yy024"
