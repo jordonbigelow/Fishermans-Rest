@@ -22,6 +22,7 @@ enum Facing {
 	DOWN,
 }
 
+@export var available_fish: Array[FishData]
 @export var speed: float = 75.0 # pixel per inch
 
 var current_fishing_state: FishingState
@@ -73,7 +74,12 @@ func change_fishing_state(new_state: FishingState) -> void:
 			await get_tree().create_timer(1.0).timeout
 			if current_state != State.FISHING:
 				return
-			print("caught fish")
+			var caught_fish := _pick_random_fish().duplicate()
+			caught_fish.set("actual_size", randf_range(caught_fish.min_size, caught_fish.max_size))
+			print("You Caught a Fish!")
+			print("Species: " + caught_fish.species_name)
+			print("Length: " + str(caught_fish.actual_size))
+			print("It has a rarity of: " + str(caught_fish.rarity))
 			change_fishing_state(FishingState.IDLE)
 			current_state = State.IDLE
 
@@ -148,3 +154,7 @@ func _on_non_fishing_area_2d_body_entered(body: Node2D) -> void:
 func _on_non_fishing_area_2d_body_exited(body: Node2D) -> void:
 	if body == self:
 		player_can_fish = true
+
+
+func _pick_random_fish() -> FishData:
+	return available_fish[randi() % available_fish.size()]

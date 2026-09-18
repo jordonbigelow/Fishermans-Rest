@@ -8,3 +8,4 @@ extends Resource
 @export var rarity: int
 @export var base_reel_difficulty: float
 @export var habitat_tags: Array[String]
+var actual_size: float

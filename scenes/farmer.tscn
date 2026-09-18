@@ -4,13 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://d4gv7bj6irdo5" path="res://assets/artwork/character/body/idle.png" id="1_vltvv"]
 [ext_resource type="Texture2D" uid="uid://b5iciihbjudoh" path="res://assets/artwork/character/eyes/Blue_walking.png" id="2_2qlof"]
 [ext_resource type="Texture2D" uid="uid://cocc5f023ncqs" path="res://assets/artwork/character/body/fishing_casting.png" id="2_a2y1s"]
+[ext_resource type="Script" uid="uid://0r5q140yy024" path="res://scripts/fish_data.gd" id="2_dfvy1"]
 [ext_resource type="Texture2D" uid="uid://c71dwx4mepuoo" path="res://assets/artwork/character/body/fishing_bite.png" id="2_mflhc"]
+[ext_resource type="Resource" uid="uid://b3gv6p1wdsdy4" path="res://resources/rainbow.tres" id="3_diquv"]
 [ext_resource type="Texture2D" uid="uid://b42s1vvixscw7" path="res://assets/artwork/character/body/walking.png" id="3_go23t"]
 [ext_resource type="Texture2D" uid="uid://dsqpge3jcikyt" path="res://assets/artwork/character/clothes/Blue_idle.png" id="3_hkter"]
 [ext_resource type="Texture2D" uid="uid://i8ukqesjwatd" path="res://assets/artwork/character/hair/Brown_idle.png" id="4_7541a"]
 [ext_resource type="Texture2D" uid="uid://48ytb4irx3me" path="res://assets/artwork/character/body/fishing_waiting.png" id="4_kma2d"]
+[ext_resource type="Resource" uid="uid://bs0ctm2exc3km" path="res://resources/brook.tres" id="4_qud2v"]
 [ext_resource type="Texture2D" uid="uid://7qcam2reu3w3" path="res://assets/artwork/character/body/fishing_reel_1.png" id="4_rqj3p"]
 [ext_resource type="Texture2D" uid="uid://bp0dv0fpj3fi6" path="res://assets/artwork/character/body/fishing_catch_1.png" id="4_wqvfu"]
+[ext_resource type="Resource" uid="uid://b6cu5bnt6dusa" path="res://resources/tiger.tres" id="5_m8qky"]
 [ext_resource type="Texture2D" uid="uid://bm8qmxk64mncp" path="res://assets/artwork/character/eyes/Blue_fishing.png" id="5_wv3kr"]
 [ext_resource type="Texture2D" uid="uid://bd7e23doxnc77" path="res://assets/artwork/character/eyes/Blue_idle.png" id="6_byn86"]
 [ext_resource type="Texture2D" uid="uid://byny8eftlnjqf" path="res://assets/artwork/character/eyes/fishing_bite_blue.png" id="7_cwfvh"]
@@ -6930,6 +6934,7 @@ _data = {
 [node name="Farmer" type="CharacterBody2D" unique_id=2043087942]
 motion_mode = 1
 script = ExtResource("1_rov4t")
+available_fish = Array[ExtResource("2_dfvy1")]([ExtResource("3_diquv"), ExtResource("4_qud2v"), ExtResource("5_m8qky")])
 
 [node name="Skin" type="AnimatedSprite2D" parent="." unique_id=738603225]
 sprite_frames = SubResource("SpriteFrames_v8af3")
